@@ -1,7 +1,7 @@
 // apm监控
 window.NRUM = window.NRUM || {};
 window.NRUM.config = {
-    key: '32fe9c8395ba4b4195f6a845504d4aa5',
+    key: '123456',
     clientStart: +new Date()
 };
 (function () {
