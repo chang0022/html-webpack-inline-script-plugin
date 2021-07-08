@@ -1,4 +1,5 @@
 const fs = require('fs')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Uglify = require('uglify-js')
 
 const REG_INJECT = /<!--\s*inline-script_(\S+)\s*-->/gi
@@ -7,8 +8,8 @@ class HtmlWebpackInlineScriptPlugin {
     this.injectList = injectList
   }
   apply(compiler) {
-    compiler.hooks.compilation.tap('HtmlWebpackInlineScriptPlugin', compilation => {
-      compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tapAsync(
+    compiler.hooks.compilation.tap('HtmlWebpackInlineScriptPlugin', (compilation) => {
+      HtmlWebpackPlugin.getHooks(compilation).afterTemplateExecution.tapAsync(
         'HtmlWebpackInlineScriptPlugin',
         (htmlPluginArgs, callback) => {
           try {
@@ -26,14 +27,14 @@ class HtmlWebpackInlineScriptPlugin {
   }
 
   replaceInlineScript(name) {
-    const script = this.injectList.find(asset => {
+    const script = this.injectList.find((asset) => {
       return asset.name === name
     })
     return script.source
   }
 
   resolveSource(env) {
-    this.injectList.forEach(asset => {
+    this.injectList.forEach((asset) => {
       try {
         if (env === 'development') {
           if (!asset.online) {

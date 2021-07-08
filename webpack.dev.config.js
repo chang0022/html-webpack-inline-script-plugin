@@ -23,7 +23,7 @@ module.exports = {
         removeAttributeQuotes: true
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency',
+      chunksSortMode: 'auto',
       favicon: resolve('public/favicon.ico')
     }),
     new HtmlWebpackInlineScriptPlugin([
