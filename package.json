@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-inline-script-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Inject script into HTML template, extension plugin of html-webpack-plugin.",
   "main": "index.js",
   "scripts": {
